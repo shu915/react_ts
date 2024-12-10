@@ -1,0 +1,1 @@
+export const LANGUAGE_LIST: string[] = ["Rails", "Javascript", "Next.js", "Golang", "PHP"];
