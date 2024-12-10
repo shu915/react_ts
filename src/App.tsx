@@ -7,7 +7,7 @@ import { UserList } from "./components/UserList";
 import { SortSelector } from "./components/SortSelector";
 import { RoleType } from "./types/roleType";
 import { SortType } from "./types/sortType";
-import { OrderType } from "./types/oderType";
+import { OrderType } from "./types/orderType";
 import { CreateUserModal } from "./components/CreateUserModal";
 import { HobbySelector } from "./components/HobbySelector";
 import { LanguageSelector } from "./components/LanguageSelector";

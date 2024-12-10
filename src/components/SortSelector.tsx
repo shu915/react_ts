@@ -1,6 +1,6 @@
 import { RoleType } from "../types/roleType";
 import { SortType } from "../types/sortType";
-import { OrderType } from "../types/oderType";
+import { OrderType } from "../types/orderType";
 
 type Props = {
   activeRoleTab: RoleType;
@@ -51,7 +51,7 @@ export const SortSelector = ({
           </select>
           <select className="border border-gray-300 rounded-md px-2 py-1" id="order" value={sortOrder} onChange={onChangeSortOrder}>
             <option value="low">低い順</option>
-            <option value="height">高い順</option>
+            <option value="high">高い順</option>
           </select>
         </div>
       </div>

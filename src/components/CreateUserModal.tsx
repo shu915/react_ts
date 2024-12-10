@@ -106,7 +106,10 @@ export const CreateUserModal = ({ isOpen, setIsOpen, originalUserList, setOrigin
                 className="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               type="text"
                 id="postCode"
-                {...register("postCode", { required: "郵便番号は必須です" })}
+                {...register("postCode", { required: "郵便番号は必須です", pattern: {
+                  value: /^\d{3}-\d{4}$/,
+                  message: "有効な郵便番号を入力してください"
+                } })}
               />
               {errors.postCode && <p className="text-red-500">{errors.postCode.message}</p>}
             </div>
@@ -116,7 +119,10 @@ export const CreateUserModal = ({ isOpen, setIsOpen, originalUserList, setOrigin
                 className="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 type="text"
                 id="phone"
-                {...register("phone", { required: "電話番号は必須です" })}
+                {...register("phone", { required: "電話番号は必須です", pattern: {
+                  value: /^\d+$/,
+                  message: "有効な電話番号を入力してください"
+                } })}
               />
               {errors.phone && <p className="text-red-500">{errors.phone.message}</p>}
             </div>

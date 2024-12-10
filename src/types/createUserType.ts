@@ -3,17 +3,17 @@ export interface CreateUserType {
   name: string;
   role: string;
   email: string;
-  age: number | undefined;
+  age: number;
   postCode: string;
   phone: string;
-  hobbies: string | undefined;
+  hobbies: string;
   url: string;
   studyMinutes?: number;
   taskCode?: number;
-  studyLangs?: string | undefined;
+  studyLangs?: string;
   score?: number;
   experienceDays?: number;
-  useLangs?: string | undefined;
+  useLangs?: string;
   availableStartCode?: number;
   availableEndCode?: number;
 } 
