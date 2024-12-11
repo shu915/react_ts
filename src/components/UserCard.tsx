@@ -1,10 +1,10 @@
-import { UserType } from "../types/user";
-import { RoleType } from "../types/role";
+import { User } from "../types/user";
+import { Role } from "../types/role";
 
 type Props = {
-  user: UserType;
-  activeRoleTab: RoleType;
-  originalUserList: UserType[];
+  user: User;
+  activeRoleTab: Role;
+  originalUserList: User[];
 };
 
 export const UserCard = ({ user, activeRoleTab, originalUserList }: Props) => {

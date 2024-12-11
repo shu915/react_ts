@@ -1,15 +1,15 @@
 import { useEffect } from "react";
-import { UserType } from "../types/user";
-import { RoleType } from "../types/role";
+import { User } from "../types/user";
+import { Role } from "../types/role";
 import { useForm } from "react-hook-form";
-import { CreateUserType } from "../types/createUser";
+import { CreateUser } from "../types/createUser";
 
 type Props = {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
-  originalUserList: UserType[];
-  setOriginalUserList: (originalUserList: UserType[]) => void;
-  setActiveRoleTab: (activeRoleTab: RoleType) => void;
+  originalUserList: User[];
+  setOriginalUserList: (originalUserList: User[]) => void;
+  setActiveRoleTab: (activeRoleTab: Role) => void;
 };
 
 export const CreateUserModal = ({
@@ -24,7 +24,7 @@ export const CreateUserModal = ({
     handleSubmit,
     formState: { errors },
     watch,
-  } = useForm<CreateUserType>();
+  } = useForm<CreateUser>();
 
   const role = watch("role");
 
@@ -32,7 +32,7 @@ export const CreateUserModal = ({
     console.log(errors);
   }, [errors]);
 
-  const onSubmitCreateUser = (data: CreateUserType): void => {
+  const onSubmitCreateUser = (data: CreateUser): void => {
     const newUser = {
       ...data,
       id: originalUserList.length + 1,

@@ -1,13 +1,13 @@
-import { RoleType } from "../types/role";
-import { SortType } from "../types/sort";
-import { OrderType } from "../types/order";
+import { Role } from "../types/role";
+import { Sort } from "../types/sort";
+import { Order } from "../types/order";
 
 type Props = {
-  activeRoleTab: RoleType;
-  sortCriteria: SortType;
-  sortOrder: OrderType;
-  setSortCriteria: (sortCriteria: SortType) => void;
-  setSortOrder: (sortOrder: OrderType) => void;
+  activeRoleTab: Role;
+  sortCriteria: Sort;
+  sortOrder: Order;
+  setSortCriteria: (sortCriteria: Sort) => void;
+  setSortOrder: (sortOrder: Order) => void;
 };
 
 export const SortSelector = ({
@@ -18,11 +18,11 @@ export const SortSelector = ({
   setSortOrder,
 }: Props) => {
   const onChangeSortCriteria = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSortCriteria(e.target.value as SortType);
+    setSortCriteria(e.target.value as Sort);
   };
 
   const onChangeSortOrder = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSortOrder(e.target.value as OrderType);
+    setSortOrder(e.target.value as Order);
   };
 
   return (

@@ -1,37 +1,37 @@
 import { useState } from "react";
 import "./App.css";
-import { UserType } from "./types/user";
+import { User } from "./types/user";
 import { USER_LIST } from "./constant/userList";
 import { RoleTab } from "./components/RoleTab";
 import { UserList } from "./components/UserList";
 import { SortSelector } from "./components/SortSelector";
-import { RoleType } from "./types/role";
-import { SortType } from "./types/sort";
-import { OrderType } from "./types/order";
+import { Role } from "./types/role";
+import { Sort } from "./types/sort";
+import { Order } from "./types/order";
 import { CreateUserModal } from "./components/CreateUserModal";
 import { HobbySelector } from "./components/HobbySelector";
 import { LanguageSelector } from "./components/LanguageSelector";
 
 function App() {
-  const [activeRoleTab, setActiveRoleTab] = useState<RoleType>("all");
-  const [sortCriteria, setSortCriteria] = useState<SortType>("id");
-  const [sortOrder, setSortOrder] = useState<OrderType>("asc");
+  const [activeRoleTab, setActiveRoleTab] = useState<Role>("all");
+  const [sortCriteria, setSortCriteria] = useState<Sort>("id");
+  const [sortOrder, setSortOrder] = useState<Order>("asc");
   const [isOpenCreateUserModal, setIsOpenCreateUserModal] =
     useState<boolean>(false);
   const [originalUserList, setOriginalUserList] =
-    useState<UserType[]>(USER_LIST);
+    useState<User[]>(USER_LIST);
   const [selectedHobby, setSelectedHobby] = useState<string>("");
   const [selectedLanguage, setSelectedLanguage] = useState<string>("");
-  const roleMatcher = (user: UserType, selectedRole: RoleType) => {
+  const roleMatcher = (user: User, selectedRole: Role) => {
     return selectedRole === "all" || user.role === selectedRole;
   };
 
-  const hobbyMatcher = (user: UserType, selectedHobby: string) => {
+  const hobbyMatcher = (user: User, selectedHobby: string) => {
     // フィルターが空の場合はすべてのユーザーを許可
     return selectedHobby.length === 0 || user.hobbies?.includes(selectedHobby);
   };
 
-  const languageMatcher = (user: UserType, selectedLanguage: string) => {
+  const languageMatcher = (user: User, selectedLanguage: string) => {
     // フィルターが空の場合はすべてのユーザーを許可
     if (user.role === "student") {
       return (

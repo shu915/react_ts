@@ -1,4 +1,4 @@
-export interface CreateUserType {
+export interface CreateUser {
 
   name: string;
   role: string;

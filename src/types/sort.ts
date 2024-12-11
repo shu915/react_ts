@@ -1,1 +1,1 @@
-export type SortType = "id" |"score" | "experienceDays" | "studyMinutes";
+export type Sort = "id" |"score" | "experienceDays" | "studyMinutes";
