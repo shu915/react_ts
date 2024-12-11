@@ -1,4 +1,4 @@
-import { RoleType } from "../types/roleType";
+import { RoleType } from "../types/role";
 
 type Props = {
   activeRoleTab: RoleType;

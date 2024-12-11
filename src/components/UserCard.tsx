@@ -1,5 +1,5 @@
-import { UserType } from "../types/userType";
-import { RoleType } from "../types/roleType";
+import { UserType } from "../types/user";
+import { RoleType } from "../types/role";
 
 type Props = {
   user: UserType;
@@ -8,6 +8,9 @@ type Props = {
 };
 
 export const UserCard = ({ user, activeRoleTab, originalUserList }: Props) => {
+  const isMentorHidden = activeRoleTab === "mentor" ? "hidden" : "";
+  const isStudentHidden = activeRoleTab === "student" ? "hidden" : "";
+
   return (
     <dl
       key={user.id}
@@ -52,44 +55,24 @@ export const UserCard = ({ user, activeRoleTab, originalUserList }: Props) => {
         <dd>{user.url}</dd>
       </div>
 
-      <div
-        className={`flex ${
-          activeRoleTab === "mentor" && user.role === "mentor" ? "hidden" : ""
-        }`}
-      >
+      <div className={`flex ${isMentorHidden}`}>
         <dt className="font-bold w-40">学習時間:</dt>
         <dd>{user.studyMinutes ?? "-"}</dd>
       </div>
-      <div
-        className={`flex ${
-          activeRoleTab === "mentor" && user.role === "mentor" ? "hidden" : ""
-        }`}
-      >
+      <div className={`flex ${isMentorHidden}`}>
         <dt className="font-bold w-40">課題番号:</dt>
         <dd>{user.taskCode ?? "-"}</dd>
       </div>
 
-      <div
-        className={`flex ${
-          activeRoleTab === "mentor" && user.role === "mentor" ? "hidden" : ""
-        }`}
-      >
+      <div className={`flex ${isMentorHidden}`}>
         <dt className="font-bold w-40">学習言語:</dt>
         <dd>{user.studyLangs?.join(", ") ?? "-"}</dd>
       </div>
-      <div
-        className={`flex ${
-          activeRoleTab === "mentor" && user.role === "mentor" ? "hidden" : ""
-        }`}
-      >
+      <div className={`flex ${isMentorHidden}`}>
         <dt className="font-bold w-40">ハピネススコア:</dt>
         <dd>{user.score ?? "-"}</dd>
       </div>
-      <div
-        className={`flex ${
-          activeRoleTab === "mentor" && user.role === "mentor" ? "hidden" : ""
-        }`}
-      >
+      <div className={`flex ${isMentorHidden}`}>
         <dt className="font-bold w-40">対応可能メンター:</dt>
         <dd>
           {originalUserList
@@ -106,43 +89,24 @@ export const UserCard = ({ user, activeRoleTab, originalUserList }: Props) => {
             .join(", ") || "-"}
         </dd>
       </div>
-      <div
-        className={`flex ${
-          activeRoleTab === "student" && user.role === "student" ? "hidden" : ""
-        }`}
-      >
+      <div className={`flex ${isStudentHidden}`}>
         <dt className="font-bold w-40">経験日数:</dt>
         <dd>{user.experienceDays ?? "-"}</dd>
       </div>
-      <div
-        className={`flex ${
-          activeRoleTab === "student" && user.role === "student" ? "hidden" : ""
-        }`}
-      >
+      <div className={`flex ${isStudentHidden}`}>
         <dt className="font-bold w-40">使用言語:</dt>
         <dd>{user.useLangs?.join(", ") ?? "-"}</dd>
       </div>
-      <div
-        className={`flex ${
-          activeRoleTab === "student" && user.role === "student" ? "hidden" : ""
-        }`}
-      >
+      <div className={`flex ${isStudentHidden}`}>
         <dt className="font-bold w-40">担当課題番号開始:</dt>
         <dd>{user.availableStartCode ?? "-"}</dd>
       </div>
-      <div
-        className={`flex ${
-          activeRoleTab === "student" && user.role === "student" ? "hidden" : ""
-        }`}
-      >
+      <div className={`flex ${isStudentHidden}`}>
         <dt className="font-bold w-40">担当課題番号末尾:</dt>
         <dd>{user.availableEndCode ?? "-"}</dd>
       </div>
-      <div
-        className={`flex ${
-          activeRoleTab === "student" && user.role === "student" ? "hidden" : ""
-        }`}
-      >
+      <div className={`flex ${isStudentHidden}`}>
+      
         <dt className="font-bold w-40">対応可能生徒</dt>
         <dd>
           {originalUserList

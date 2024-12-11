@@ -1,6 +1,6 @@
-import { RoleType } from "../types/roleType";
-import { SortType } from "../types/sortType";
-import { OrderType } from "../types/orderType";
+import { RoleType } from "../types/role";
+import { SortType } from "../types/sort";
+import { OrderType } from "../types/order";
 
 type Props = {
   activeRoleTab: RoleType;
@@ -17,9 +17,6 @@ export const SortSelector = ({
   setSortCriteria,
   setSortOrder,
 }: Props) => {
- 
-
-
   const onChangeSortCriteria = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSortCriteria(e.target.value as SortType);
   };
@@ -33,25 +30,31 @@ export const SortSelector = ({
       <div>
         <div className="flex gap-2 items-center">
           <label htmlFor="sort">ソート</label>
-        <select className="border border-gray-300 rounded-md px-2 py-1"
-          id="sort"
-          value={sortCriteria}
-          onChange={onChangeSortCriteria}
-        >
-          <option value="id">--</option>
-          {activeRoleTab === "student" && (
-            <>
-              <option value="score">スコア</option>
-              <option value="studyMinutes">学習時間</option>
-            </>
-          )}
-          {activeRoleTab === "mentor" && (
-            <option value="experienceDays">経験日数</option>
-          )}
+          <select
+            className="border border-gray-300 rounded-md px-2 py-1"
+            id="sort"
+            value={sortCriteria}
+            onChange={onChangeSortCriteria}
+          >
+            <option value="id">--</option>
+            {activeRoleTab === "student" && (
+              <>
+                <option value="score">スコア</option>
+                <option value="studyMinutes">学習時間</option>
+              </>
+            )}
+            {activeRoleTab === "mentor" && (
+              <option value="experienceDays">経験日数</option>
+            )}
           </select>
-          <select className="border border-gray-300 rounded-md px-2 py-1" id="order" value={sortOrder} onChange={onChangeSortOrder}>
-            <option value="low">低い順</option>
-            <option value="high">高い順</option>
+          <select
+            className="border border-gray-300 rounded-md px-2 py-1"
+            id="order"
+            value={sortOrder}
+            onChange={onChangeSortOrder}
+          >
+            <option value="asc">昇順</option>
+            <option value="desc">降順</option>
           </select>
         </div>
       </div>

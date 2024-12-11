@@ -1,13 +1,13 @@
-import { useEffect, useState, useCallback } from "react";
+import { useState } from "react";
 import "./App.css";
-import { UserType } from "./types/userType";
+import { UserType } from "./types/user";
 import { USER_LIST } from "./constant/userList";
 import { RoleTab } from "./components/RoleTab";
 import { UserList } from "./components/UserList";
 import { SortSelector } from "./components/SortSelector";
-import { RoleType } from "./types/roleType";
-import { SortType } from "./types/sortType";
-import { OrderType } from "./types/orderType";
+import { RoleType } from "./types/role";
+import { SortType } from "./types/sort";
+import { OrderType } from "./types/order";
 import { CreateUserModal } from "./components/CreateUserModal";
 import { HobbySelector } from "./components/HobbySelector";
 import { LanguageSelector } from "./components/LanguageSelector";
@@ -15,12 +15,10 @@ import { LanguageSelector } from "./components/LanguageSelector";
 function App() {
   const [activeRoleTab, setActiveRoleTab] = useState<RoleType>("all");
   const [sortCriteria, setSortCriteria] = useState<SortType>("id");
-  const [sortOrder, setSortOrder] = useState<OrderType>("low");
+  const [sortOrder, setSortOrder] = useState<OrderType>("asc");
   const [isOpenCreateUserModal, setIsOpenCreateUserModal] =
     useState<boolean>(false);
   const [originalUserList, setOriginalUserList] =
-    useState<UserType[]>(USER_LIST);
-  const [processedUserList, setProcessedUserList] =
     useState<UserType[]>(USER_LIST);
   const [selectedHobby, setSelectedHobby] = useState<string>("");
   const [selectedLanguage, setSelectedLanguage] = useState<string>("");
@@ -37,48 +35,33 @@ function App() {
     // フィルターが空の場合はすべてのユーザーを許可
     if (user.role === "student") {
       return (
-        selectedLanguage.length === 0 || user.studyLangs?.includes(selectedLanguage)
+        selectedLanguage.length === 0 ||
+        user.studyLangs?.includes(selectedLanguage)
       );
     } else {
       return (
-        selectedLanguage.length === 0 || user.useLangs?.includes(selectedLanguage)
+        selectedLanguage.length === 0 ||
+        user.useLangs?.includes(selectedLanguage)
       );
     }
   };
 
-  const processUserList = useCallback(
-    (userList: UserType[]) => {
-      return userList
-        .filter((user) => {
-          const roleMatch = roleMatcher(user, activeRoleTab);
-          const hobbyMatch = hobbyMatcher(user, selectedHobby);
-          const languageMatch = languageMatcher(user, selectedLanguage);
-          return roleMatch && hobbyMatch && languageMatch;
-        })
-        .sort((a, b) => {
-          return sortOrder === "low"
-            ? (a[sortCriteria] as number) - (b[sortCriteria] as number)
-            : (b[sortCriteria] as number) - (a[sortCriteria] as number);
-        });
-    },
-    [activeRoleTab, sortCriteria, sortOrder, selectedHobby, selectedLanguage]
-  );
-
-  useEffect(() => {
-    setProcessedUserList(() => processUserList(originalUserList));
-  }, [
-    activeRoleTab,
-    sortCriteria,
-    sortOrder,
-    originalUserList,
-    processUserList,
-  ]);
+  const processedUserList = originalUserList
+    .filter((user) => {
+      const roleMatch = roleMatcher(user, activeRoleTab);
+      const hobbyMatch = hobbyMatcher(user, selectedHobby);
+      const languageMatch = languageMatcher(user, selectedLanguage);
+      return roleMatch && hobbyMatch && languageMatch;
+    })
+    .sort((a, b) => {
+      return sortOrder === "asc"
+        ? (a[sortCriteria] as number) - (b[sortCriteria] as number)
+        : (b[sortCriteria] as number) - (a[sortCriteria] as number);
+    });
 
   const onClickCreateUser = () => {
     setIsOpenCreateUserModal(true);
   };
-
- 
 
   return (
     <>
