@@ -1,8 +1,8 @@
-import { RoleType } from "../types/role";
+import { Role } from "../types/role";
 
 type Props = {
-  activeRoleTab: RoleType;
-  setActiveRoleTab: (activeRoleTab: RoleType) => void;
+  activeRoleTab: Role;
+  setActiveRoleTab: (activeRoleTab: Role) => void;
 };
 
 export const RoleTab = ({ activeRoleTab, setActiveRoleTab }: Props) => {

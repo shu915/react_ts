@@ -1,11 +1,11 @@
-import { UserType } from "../types/user";
-import { RoleType } from "../types/role";
+import { User } from "../types/user";
+import { Role } from "../types/role";
 import { UserCard } from "./UserCard";
 
 type Props = {
-  activeRoleTab: RoleType;
-  processedUserList: UserType[];
-  originalUserList: UserType[];
+  activeRoleTab: Role;
+  processedUserList: User[];
+  originalUserList: User[];
 };
 
 export const UserList = ({
