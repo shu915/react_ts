@@ -1,0 +1,1 @@
+export type Sort = "id" |"score" | "experienceDays" | "studyMinutes";
